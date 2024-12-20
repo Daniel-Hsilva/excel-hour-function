@@ -68,7 +68,7 @@ A fórmula foi desenvolvida com a função **LAMBDA & LET** do Excel, permitindo
 ---
 
 ## ✨ Contribuições
-Sinta-se à vontade para sugerir melhorias ou reportar problemas no [repositório GitHub](https://github.com/seu-usuario/seu-repositorio).
+Sinta-se à vontade para sugerir melhorias ou reportar problemas no [repositório GitHub](https://github.com/Daniel-Hsilva).
 
 ---
 

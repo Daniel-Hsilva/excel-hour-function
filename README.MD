@@ -4,7 +4,7 @@
 ## 📝 Descrição
 Este projeto contém uma fórmula personalizada criada no Excel para calcular a diferença entre datas e horas, considerando cenários específicos como intervalos ou diferentes formatos de entrada.
 
-A fórmula foi desenvolvida com a função **LAMBDA** do Excel, permitindo reutilização eficiente sem a necessidade de código VBA.
+A fórmula foi desenvolvida com a função **LAMBDA & LET** do Excel, permitindo reutilização eficiente sem a necessidade de código VBA.
 
 ---
 

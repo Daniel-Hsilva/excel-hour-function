@@ -1,0 +1,53 @@
+// Abra o Gerenciador de Nomes
+
+// Vá em 'Novo...'
+
+// No campo 'Nome', copie o nome abaixo e cole:
+HORAS.TOTAIS
+
+// No campo 'Descrição', copie a descrição abaixo e cole:
+Retorna o total de horas correspondentes à duração de um evento.
+**Nota:** Certifique-se de que a célula onde será aplicada a função esteja formatada como `[hh:mm:ss]` ou `[37:30:55]` para cálculos de horas superiores a 24.
+
+// No campo 'Refere-se a:' copie a fórmula abaixo e cole:
+
+=LAMBDA(data_inicial;data_final;hora_inicial;hora_final;[se_vazio];
+LET(
+    __data_inicial; data_inicial;
+    __data_final; data_final;
+    __hora_inicial; hora_inicial;
+    __hora_final; hora_final;
+
+     __hora_inicial_valida; TEXTO(hora_inicial;"hh:mm:ss") * 1 = hora_inicial;
+     __hora_final_valida; TEXTO(hora_final;"hh:mm:ss") * 1 = hora_final;
+
+    __hora_inicial_formatada;
+    SES(
+        NÚM.CARACT(hora_inicial) = 1; CONCATENAR("00"; ":"; "0"; DIREITA(hora_inicial; 1));
+        NÚM.CARACT(hora_inicial) = 2; CONCATENAR("00"; ":"; DIREITA(hora_inicial; 2));
+        NÚM.CARACT(hora_inicial) = 3; CONCATENAR("0"; ESQUERDA(hora_inicial; 1); ":"; DIREITA(hora_inicial; 2));
+        NÚM.CARACT(hora_inicial) = 4; CONCATENAR(ESQUERDA(hora_inicial; 2); ":"; DIREITA(hora_inicial; 2))
+    );
+
+    __hora_final_formatada;
+    SES(
+        NÚM.CARACT(hora_final) = 1; CONCATENAR("00"; ":"; "0"; DIREITA(hora_final; 1));
+        NÚM.CARACT(hora_final) = 2; CONCATENAR("00"; ":"; DIREITA(hora_final; 2));
+        NÚM.CARACT(hora_final) = 3; CONCATENAR("0"; ESQUERDA(hora_final; 1); ":"; DIREITA(hora_final; 2));
+        NÚM.CARACT(hora_final) = 4; CONCATENAR(ESQUERDA(hora_final; 2); ":"; DIREITA(hora_final; 2))
+    );
+
+    __hora_inicial_ajustada; SE(__hora_inicial_valida; hora_inicial; __hora_inicial_formatada);
+    __hora_final_ajustada; SE(__hora_final_valida; hora_final; __hora_final_formatada);
+
+    __diferenca_horas;
+    SE(OU(__data_inicial = ""; __data_final = ""; __hora_inicial_ajustada = ""; __hora_final_ajustada = "");
+        se_vazio;
+        (__data_final + __hora_final_ajustada) - (__data_inicial + __hora_inicial_ajustada)
+    );
+
+    __diferenca_horas
+    )
+)
+
+// Teste a fórmula com valores reais para validar o comportamento.
